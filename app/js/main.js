@@ -34,7 +34,6 @@ var RunningArrow = function(id, settings){
     var then = Date.now();;
     var elapsed;
     var now;
-    console.log(111);
     function getSizeCanvas(lines){
         return lines.reduce(function(acc, line){
             var maxX = Math.max(line.x1, line.x2);
