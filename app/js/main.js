@@ -15,7 +15,8 @@ var RunningArrow = function(id, settings){
         circleColor: settings.circleColor || '#ffffff',
         start: settings.start || {x: (settings.widthArrow || widthArrow), y: circleRadius},
         dir: settings.dir || {x: 1, y: 0},
-        widthArrowPart: settings.widthArrowPart || 10
+        widthArrowPart: settings.widthArrowPart || 10,
+        fps: settings.fps || 60
     }
 
     var xdir = defaultSettings.dir.x;
@@ -29,8 +30,7 @@ var RunningArrow = function(id, settings){
     var size = getSizeCanvas(defaultSettings.lines);
     canvas.width = size.w + defaultSettings.circleRadius;
     canvas.height = size.h + defaultSettings.circleRadius;
-    var fps = 600;
-    var fpsInterval = 1000 / fps;;
+    var fpsInterval = 1000 / defaultSettings.fps;
     var then = Date.now();;
     var elapsed;
     var now;
@@ -196,8 +196,8 @@ var RunningArrow = function(id, settings){
         elapsed = now - then;
         if (elapsed > fpsInterval) {
             then = now - (elapsed % fpsInterval);
+            drawAll();
         }
-        drawAll();
     };
 
     defaultPosArrow();
