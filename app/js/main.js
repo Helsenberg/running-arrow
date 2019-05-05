@@ -200,9 +200,8 @@ var RunningArrow = function(id, settings){
         }
     };
 
-    defaultPosArrow();
-
     this.run = function(){
+        defaultPosArrow();
         engineStep();
     }
 
